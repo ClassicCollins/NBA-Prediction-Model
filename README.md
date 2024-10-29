@@ -158,7 +158,7 @@ Ensure you have Python installed and then run:
 
 <!-- LICENCE -->
 ## License
-* This project is licensed under the MIT License. See the [LICENSE](https://github.com/ClassicCollins/NBA-Prediction-Model/LICENSE) file for details
+* This project is licensed under the MIT License. See the [LICENSE](https://github.com/ClassicCollins/NBA-Prediction-Model/blob/master/LICENSE) file for details
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
