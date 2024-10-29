@@ -1,86 +1,54 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import numpy as np
 
-# Load your pre-trained models
+# Load the models
 lr_model = joblib.load('nba_lr_model.pkl')
 GBoost_model = joblib.load('nba_GBoost_model.pkl')
 RF_model = joblib.load('nba_rf_model.pkl')
 
-st.title('NBA Predictions')
+# Load the data required for predictions
+nba_elo = pd.read_csv('data/nba_elo_latest.csv')
 
-# User input for team selection
-team1 = st.text_input('Enter Home Team (e.g., BOS):')
-team2 = st.text_input('Enter Away Team (e.g., PHI):')
-
-# Load and preprocess data
-@st.cache
-def load_data():
-    table1 = pd.read_csv("data/nba_elo.csv")
-    table2 = pd.read_csv("data/nba_elo_latest.csv")
-    return table1, table2
-
-table1, table2 = load_data()
-
-def preprocess_data(table1, table2):
-    table1['date'] = pd.to_datetime(table1['date'])
-    df1 = table1[(table1['season'] >= 2019) & (table1['season'] <= 2022)]
-    
+# Function to preprocess input data for predictions
+def preprocess_input(team1, team2, table2):
     table2['date'] = pd.to_datetime(table2['date'])
     df2 = table2[table2['season'] == 2023]
     
-    df1['game_result'] = (df1['score1'] > df1['score2']).astype(int)
+    # Determine game results (1 if team1 wins, 0 if team2 wins)
     df2['game_result'] = (df2['score1'] > df2['score2']).astype(int)
-    
-    cols_to_drop = ['date', 'season', 'playoff', 'elo1_post', 'elo2_post', 'neutral', 
+
+    # Drop insignificant columns
+    cols_to_drop = ['date', 'season', 'playoff', 'team1', 'team2', 'elo1_post', 'elo2_post', 'neutral', 
                     'carm-elo1_pre', 'carm-elo2_pre', 'carm-elo_prob1', 'carm-elo_prob2', 
                     'carm-elo1_post', 'carm-elo2_post', 'importance', 'total_rating', 'score1', 'score2']
-    df1.drop(columns=cols_to_drop, inplace=True)
     df2.drop(columns=cols_to_drop, inplace=True)
+
+    df2.reset_index(drop=True, inplace=True)
     
-    df1.reset_index(drop=True, inplace=True)
-    
-    train = df1
-    test = df2
-    
-    return train, test
+    return df2
 
-train, test = preprocess_data(table1, table2)
+# Streamlit UI
+st.title('NBA Game Outcome Predictor')
 
-# Ensure the 'team1' and 'team2' columns exist in the test DataFrame
-st.write("Test DataFrame columns:", test.columns.tolist())
+# User input for teams
+team1 = st.selectbox('Select Team 1', options=nba_elo['team'].unique())
+team2 = st.selectbox('Select Team 2', options=nba_elo['team'].unique())
 
-def predict_outcome(team1, team2, model):
-    try:
-        test_sample = test[(test['team1'] == team1) & (test['team2'] == team2)]
-        if test_sample.empty:
-            return None
-        test_sample = test_sample.drop(columns=['game_result'])
-
-        # Print columns for debugging
-        st.write("Columns in test_sample:", test_sample.columns.tolist())
-
-        prediction = model.predict(test_sample)
-        return prediction[0]
-    except KeyError as e:
-        st.error(f"KeyError: {e}. Available columns: {test.columns}")
-        return None
-    except ValueError as e:
-        st.error(f"ValueError: {e}. Check the feature names and data types.")
-        return None
-
-# Predict button
+# Prediction button
 if st.button('Predict Outcome'):
-    if team1 and team2:
-        prediction_lr = predict_outcome(team1, team2, lr_model)
-        prediction_gb = predict_outcome(team1, team2, GBoost_model)
-        prediction_rf = predict_outcome(team1, team2, RF_model)
-        
-        if prediction_lr is None or prediction_gb is None or prediction_rf is None:
-            st.write(f"No data found for the game between {team1} and {team2}")
-        else:
-            st.write(f"Logistic Regression Model Prediction: Team {team1 if prediction_lr == 1 else team2} wins")
-            st.write(f"Gradient Boosting Model Prediction: Team {team1 if prediction_gb == 1 else team2} wins")
-            st.write(f"Random Forest Model Prediction: Team {team1 if prediction_rf == 1 else team2} wins")
-    else:
-        st.write("Please enter both Team 1 and Team 2.")
+    # Preprocess the input data
+    input_data = preprocess_input(team1, team2, nba_elo)
+    
+    # Make predictions with all models
+    lr_prediction = lr_model.predict(input_data)[0]
+    gboost_prediction = GBoost_model.predict(input_data)[0]
+    rf_prediction = RF_model.predict(input_data)[0]
+
+    # Convert predictions to readable format
+    result_mapping = {1: f'{team1} Wins', 0: f'{team2} Wins'}
+    st.write("Predictions:")
+    st.write(f"Logistic Regression: {result_mapping[lr_prediction]}")
+    st.write(f"Gradient Boosting: {result_mapping[gboost_prediction]}")
+    st.write(f"Random Forest: {result_mapping[rf_prediction]}")
