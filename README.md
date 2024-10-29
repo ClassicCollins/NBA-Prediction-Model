@@ -36,14 +36,14 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
   <p align="center">
     A project designed to spark your interest NBA Games Prediction using Python.!
     <br />
-    <a href="https://github.com/ClassicCollins/heart-disease-prediction"><strong>Explore the Model »</strong></a>
+    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model"><strong>Explore the Docs »</strong></a>
     <br />
     <br />
     <a href="https://zindi.africa/competitions/microsoft-x-data-science-nigeria-2024-ai-bootcamp-qualification-hackathon">Participate in The Project</a>
     ·
-    <a href="https://github.com/ClassicCollins/heart-disease-prediction/blob/classic/.github/ISSUE_TEMPLATE/bug-report---.md">Report Bug</a>
+    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/.github/ISSUE_TEMPLATE/bug-report---.md">Report Bug</a>
     ·
-    <a href="https://github.com/ClassicCollins/heart-disease-prediction/blob/classic/.github/ISSUE_TEMPLATE/feature-request-form---.md">Request Feature</a>
+    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/.github/ISSUE_TEMPLATE/feature-request-form---.md">Request Feature</a>
   </p>
 </div>
 
