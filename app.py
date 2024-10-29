@@ -28,8 +28,7 @@ def preprocess_data(table2):
 
     # Drop insignificant columns
     cols_to_drop = ['date', 'season', 'playoff', 'elo1_post', 'elo2_post', 'neutral', 
-                    'carm-elo1_pre', 'carm-elo2_pre', 'carm-elo_prob1', 'carm-elo_prob2', 
-                    'carm-elo1_post', 'carm-elo2_post', 'importance', 'total_rating', 'score1', 'score2']
+                    'importance', 'total_rating', 'score1', 'score2']
     df2.drop(columns=cols_to_drop, inplace=True)
     df2.reset_index(drop=True, inplace=True)
 
@@ -42,13 +41,31 @@ def create_test_sample(teamA, teamB, test):
     # Create a test sample for the input teams
     if teamA not in test['team'].values or teamB not in test['team'].values:
         return None
+
+    # Extract features for the teams
+    elo1_pre = test.loc[test['team'] == teamA, 'elo'].values[0]
+    elo2_pre = test.loc[test['team'] == teamB, 'elo'].values[0]
+    raptor1_pre = test.loc[test['team'] == teamA, 'raptor'].values[0]  # Adjust according to your actual column name
+    raptor2_pre = test.loc[test['team'] == teamB, 'raptor'].values[0]  # Adjust according to your actual column name
+    elo_prob1 = test.loc[test['team'] == teamA, 'elo_prob'].values[0]  # Adjust according to your actual column name
+    elo_prob2 = test.loc[test['team'] == teamB, 'elo_prob'].values[0]  # Adjust according to your actual column name
+    raptor_prob1 = test.loc[test['team'] == teamA, 'raptor_prob'].values[0]  # Adjust according to your actual column name
+    raptor_prob2 = test.loc[test['team'] == teamB, 'raptor_prob'].values[0]  # Adjust according to your actual column name
+    quality = test.loc[test['team'] == teamA, 'quality'].values[0]  # Adjust according to your actual column name
+
     test_sample = pd.DataFrame({
         'team1': [teamA],
         'team2': [teamB],
-        # Add necessary features based on your model's training data
-        # For example, if you have Elo ratings:
-        'elo1': [test.loc[test['team'] == teamA, 'elo'].values[0]],
-        'elo2': [test.loc[test['team'] == teamB, 'elo'].values[0]]
+        'elo1_pre': [elo1_pre],
+        'elo2_pre': [elo2_pre],
+        'elo_prob1': [elo_prob1],
+        'elo_prob2': [elo_prob2],
+        'raptor1_pre': [raptor1_pre],
+        'raptor2_pre': [raptor2_pre],
+        'raptor_prob1': [raptor_prob1],
+        'raptor_prob2': [raptor_prob2],
+        'quality': [quality],
+        'game_result': [None]  # Placeholder for game_result if needed
     })
     return test_sample
 
