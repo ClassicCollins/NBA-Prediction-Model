@@ -22,7 +22,7 @@ def load_data():
 
 table1, table2 = load_data()
 
-def preprocess_data(team1, team2, table2):
+def preprocess_data(table2):
     table2['date'] = pd.to_datetime(table2['date'])
     df2 = table2[table2['season'] == 2023]
     
@@ -32,14 +32,14 @@ def preprocess_data(team1, team2, table2):
     # Drop insignificant columns
     cols_to_drop = ['date', 'season', 'playoff', 'team1', 'team2', 'elo1_post', 'elo2_post', 'neutral', 
                     'carm-elo1_pre', 'carm-elo2_pre', 'carm-elo_prob1', 'carm-elo_prob2', 
-                    'carm-elo1_post', 'carm-elo2_post', 'importance', 'total_rating', 'score1', 'score2','game_result']
+                    'carm-elo1_post', 'carm-elo2_post', 'importance', 'total_rating', 'score1', 'score2']
     df2.drop(columns=cols_to_drop, inplace=True)
 
     df2.reset_index(drop=True, inplace=True)
     
     return df2
 
-test = preprocess_data(team1,team2, table2)
+test = preprocess_data(table2)
 
 def predict_outcome(team1, team2, model):
     test_sample = test[(test['team1'] == team1) & (test['team2'] == team2)]
