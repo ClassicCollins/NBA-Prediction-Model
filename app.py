@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as st 
 import pandas as pd
 import joblib
 
@@ -14,7 +14,7 @@ team1 = st.text_input('Enter Home Team (e.g., BOS):')
 team2 = st.text_input('Enter Away Team (e.g., PHI):')
 
 # Load and preprocess data
-@st.cache
+@st.cache_data
 def load_data():
     table1 = pd.read_csv("data/nba_elo.csv")
     table2 = pd.read_csv("data/nba_elo_latest.csv")
@@ -25,27 +25,37 @@ table1, table2 = load_data()
 def preprocess_data(table2):
     table2['date'] = pd.to_datetime(table2['date'])
     df2 = table2[table2['season'] == 2023]
-    
-    # Determine game results (1 if team1 wins, 0 if team2 wins)
-    df2['game_result'] = (df2['score1'] > df2['score2']).astype(int)
 
     # Drop insignificant columns
-    cols_to_drop = ['date', 'season', 'playoff', 'team1', 'team2', 'elo1_post', 'elo2_post', 'neutral', 
+    cols_to_drop = ['date', 'season', 'playoff', 'elo1_post', 'elo2_post', 'neutral', 
                     'carm-elo1_pre', 'carm-elo2_pre', 'carm-elo_prob1', 'carm-elo_prob2', 
                     'carm-elo1_post', 'carm-elo2_post', 'importance', 'total_rating', 'score1', 'score2']
     df2.drop(columns=cols_to_drop, inplace=True)
-
     df2.reset_index(drop=True, inplace=True)
-    
+
     return df2
 
+# Prepare the test data
 test = preprocess_data(table2)
 
-def predict_outcome(teamA, teamB, model):
-    test_sample = test[(test['team1'] == teamA) & (test['team2'] == teamB)]
-    if test_sample.empty:
+def create_test_sample(teamA, teamB, test):
+    # Create a test sample for the input teams
+    if teamA not in test['team'].values or teamB not in test['team'].values:
         return None
-    test_sample = test_sample.drop(columns=['game_result'])
+    test_sample = pd.DataFrame({
+        'team1': [teamA],
+        'team2': [teamB],
+        # Add necessary features based on your model's training data
+        # For example, if you have Elo ratings:
+        'elo1': [test.loc[test['team'] == teamA, 'elo'].values[0]],
+        'elo2': [test.loc[test['team'] == teamB, 'elo'].values[0]]
+    })
+    return test_sample
+
+def predict_outcome(teamA, teamB, model):
+    test_sample = create_test_sample(teamA, teamB, test)
+    if test_sample is None:
+        return None
     prediction = model.predict(test_sample)
     return prediction[0]
 
