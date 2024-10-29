@@ -45,12 +45,12 @@ def create_test_sample(teamA, teamB, test):
     # Extract features for the teams
     elo1_pre = test.loc[test['team'] == teamA, 'elo'].values[0]
     elo2_pre = test.loc[test['team'] == teamB, 'elo'].values[0]
-    raptor1_pre = test.loc[test['team'] == teamA, 'raptor'].values[0]  # Adjust according to your actual column name
-    raptor2_pre = test.loc[test['team'] == teamB, 'raptor'].values[0]  # Adjust according to your actual column name
-    elo_prob1 = test.loc[test['team'] == teamA, 'elo_prob'].values[0]  # Adjust according to your actual column name
-    elo_prob2 = test.loc[test['team'] == teamB, 'elo_prob'].values[0]  # Adjust according to your actual column name
-    raptor_prob1 = test.loc[test['team'] == teamA, 'raptor_prob'].values[0]  # Adjust according to your actual column name
-    raptor_prob2 = test.loc[test['team'] == teamB, 'raptor_prob'].values[0]  # Adjust according to your actual column name
+    raptor1_pre = test.loc[test['team'] == teamA, 'raptor1_pre'].values[0]  # Adjust according to your actual column name
+    raptor2_pre = test.loc[test['team'] == teamB, 'raptor2_pre'].values[0]  # Adjust according to your actual column name
+    elo_prob1 = test.loc[test['team'] == teamA, 'elo_prob1'].values[0]  # Adjust according to your actual column name
+    elo_prob2 = test.loc[test['team'] == teamB, 'elo_prob2'].values[0]  # Adjust according to your actual column name
+    raptor_prob1 = test.loc[test['team'] == teamA, 'raptor_prob1'].values[0]  # Adjust according to your actual column name
+    raptor_prob2 = test.loc[test['team'] == teamB, 'raptor_prob2'].values[0]  # Adjust according to your actual column name
     quality = test.loc[test['team'] == teamA, 'quality'].values[0]  # Adjust according to your actual column name
 
     test_sample = pd.DataFrame({
