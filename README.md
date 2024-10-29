@@ -27,7 +27,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ClassicCollins/heart-disease-prediction/blob/classic/image/logo.png">
+  <a href="https://github.com/ClassicCollins/heart-disease-prediction/blob/classic/image/screenshot.png">
     <img src="image/logo.png" alt="Logo" width="600" height="200">
   </a>
 
@@ -158,7 +158,7 @@ Ensure you have Python installed and then run:
 
 <!-- LICENCE -->
 ## License
-* `MIT` License applies.
+* This project is licensed under the MIT License. See the [LICENSE](https://github.com/ClassicCollins/NBA-Prediction-Model/blob/master/LICENSE) file for details
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
