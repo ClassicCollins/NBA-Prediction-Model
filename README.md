@@ -27,7 +27,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ClassicCollins/heart-disease-prediction/blob/classic/image/screenshot.png">
+  <a href="https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/image/screenshot.png">
     <img src="image/logo.png" alt="Logo" width="600" height="200">
   </a>
 
@@ -79,7 +79,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://zindi.africa/competitions/microsoft-x-data-science-nigeria-2024-ai-bootcamp-qualification-hackathon)
+[![Product Name Screen Shot][product-screenshot]](https://zindi.africa/)
 
 * `Welcome` This repository contains the code and resources for predicting the teams that will qualify for the 2022-2023 NBA Playoffs from both East and West conferences, as well as the eventual winners of each conference and the NBA finals.
 * `Introduction:` This project utilizes machine learning models to predict NBA game outcomes and playoff qualifications. The models are trained using historical NBA data, including ELO and RAPTOR ratings, and predict game outcomes based on these features. The predictions are then used to determine the teams that will qualify for the playoffs and the eventual winners of the conference finals and NBA finals.
@@ -158,7 +158,7 @@ Ensure you have Python installed and then run:
 
 <!-- LICENCE -->
 ## License
-* This project is licensed under the MIT License. See the [LICENSE](https://github.com/ClassicCollins/NBA-Prediction-Model/blob/master/LICENSE) file for details
+* This project is licensed under the MIT License. See the [LICENSE](https://github.com/ClassicCollins/NBA-Prediction-Model/LICENSE) file for details
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
