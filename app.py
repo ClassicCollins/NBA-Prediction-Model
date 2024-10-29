@@ -47,16 +47,20 @@ def preprocess_data(table1, table2):
 
 train, test = preprocess_data(table1, table2)
 
-# Check the columns in the test DataFrame to ensure 'team1' and 'team2' exist
+# Ensure the 'team1' and 'team2' columns exist in the test DataFrame
 st.write("Test DataFrame columns:", test.columns)
 
 def predict_outcome(team1, team2, model):
-    test_sample = test[(test['team1'] == team1) & (test['team2'] == team2)]
-    if test_sample.empty:
+    try:
+        test_sample = test[(test['team1'] == team1) & (test['team2'] == team2)]
+        if test_sample.empty:
+            return None
+        test_sample = test_sample.drop(columns=['game_result'])
+        prediction = model.predict(test_sample)
+        return prediction[0]
+    except KeyError as e:
+        st.error(f"KeyError: {e}. Available columns: {test.columns}")
         return None
-    test_sample = test_sample.drop(columns=['game_result'])
-    prediction = model.predict(test_sample)
-    return prediction[0]
 
 # Predict button
 if st.button('Predict Outcome'):
