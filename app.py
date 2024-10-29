@@ -16,8 +16,8 @@ team2 = st.text_input('Enter Away Team (e.g., PHI):')
 # Load and preprocess data
 @st.cache
 def load_data():
-    table1 = pd.read_csv("nba_elo.csv")
-    table2 = pd.read_csv("nba_elo_latest.csv")
+    table1 = pd.read_csv("data/nba_elo.csv")
+    table2 = pd.read_csv("data/nba_elo_latest.csv")
     return table1, table2
 
 table1, table2 = load_data()
