@@ -7,7 +7,7 @@ lr_model = joblib.load('nba_lr_model.pkl')
 GBoost_model = joblib.load('nba_GBoost_model.pkl')
 RF_model = joblib.load('nba_rf_model.pkl')
 
-st.title('NBA Playoff Predictions')
+st.title('NBA Predictions')
 
 # User input for team selection
 team1 = st.text_input('Enter Home Team (e.g., BOS):')
@@ -48,7 +48,7 @@ def preprocess_data(table1, table2):
 train, test = preprocess_data(table1, table2)
 
 # Ensure the 'team1' and 'team2' columns exist in the test DataFrame
-st.write("Test DataFrame columns:", test.columns)
+st.write("Test DataFrame columns:", test.columns.tolist())
 
 def predict_outcome(team1, team2, model):
     try:
@@ -56,10 +56,17 @@ def predict_outcome(team1, team2, model):
         if test_sample.empty:
             return None
         test_sample = test_sample.drop(columns=['game_result'])
+
+        # Print columns for debugging
+        st.write("Columns in test_sample:", test_sample.columns.tolist())
+
         prediction = model.predict(test_sample)
         return prediction[0]
     except KeyError as e:
         st.error(f"KeyError: {e}. Available columns: {test.columns}")
+        return None
+    except ValueError as e:
+        st.error(f"ValueError: {e}. Check the feature names and data types.")
         return None
 
 # Predict button
