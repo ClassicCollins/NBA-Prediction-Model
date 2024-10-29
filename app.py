@@ -41,8 +41,8 @@ def preprocess_data(table2):
 
 test = preprocess_data(table2)
 
-def predict_outcome(team1, team2, model):
-    test_sample = test[(test['team1'] == team1) & (test['team2'] == team2)]
+def predict_outcome(teamA, teamB, model):
+    test_sample = test[(test['team1'] == teamA) & (test['team2'] == teamB)]
     if test_sample.empty:
         return None
     test_sample = test_sample.drop(columns=['game_result'])
