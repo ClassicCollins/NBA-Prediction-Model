@@ -74,7 +74,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://zindi.africa/)
+[![Product Name Screen Shot][product-screenshot]](https://nba-game-predictor.streamlit.app/)
 
 * `Welcome` This repository contains the code and resources for predicting the teams that will qualify for the 2022-2023 NBA Playoffs from both East and West conferences, as well as the eventual winners of each conference and the NBA finals.
 * `Introduction:` This project utilizes machine learning models to predict NBA game outcomes and playoff qualifications. The models are trained using historical NBA data, including ELO and RAPTOR ratings, and predict game outcomes based on these features. The predictions are then used to determine the teams that will qualify for the playoffs and the eventual winners of the conference finals and NBA finals.
@@ -115,6 +115,19 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- HOW TO USE -->
+## How to Make Use of This Project
+`Home Page:` 
+* Access the App: Visit [NBA Game Predictor](https://nba-game-predictor.streamlit.app/) to make predictions.
+* Run Notebook [nba_prediction_notebook](https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/nba_prediction_notebook.ipynb) in the reporsitory
+* This would predict the teams that would qualify for the 2022-2023 NBA PLAYOFFS from both East and West conference
+* The top teams from each conferences will play the semi-final and eventually the NBA finals.
+* The results of the games are downloaded automatically and saved in the result folder.
+* `DEN` is predicted as the winner of 2022-2023 NBA
+* Another notebook called `NBA Prediction` contains fictional_team build by choosen 15 players at random and aggregating their statistics
+* This was used to build their raptor ratings as a team.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- RESULTS -->
 ## Results
 * Logistic Regression demonstrated superior accuracy compared to other models.
