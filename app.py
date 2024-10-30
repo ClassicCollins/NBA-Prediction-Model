@@ -11,6 +11,10 @@ model = joblib.load('trained_models/nba_lr_model.pkl')
 # Load the preprocessed Elo ratings data
 elo_processed_data = pd.read_csv('data/elo_processed_data.csv')  # Adjust this as needed to load your data
 
+# Drop the 'Unnamed: 0' column if it exists
+if 'Unnamed: 0' in elo_processed_data.columns:
+    elo_processed_data.drop(columns=['Unnamed: 0'], inplace=True)
+
 # Prediction function
 def predict_outcome(team1, team2, date, data, model):
     new_game = data[(data['team1'] == team1) & 
