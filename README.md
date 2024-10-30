@@ -27,8 +27,6 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a></a> 
-  </a>
 
 <h3 align="center">NBA Prediction Model</h3>
 
