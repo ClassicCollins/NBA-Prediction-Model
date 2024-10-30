@@ -62,6 +62,4 @@ if st.button("Predict Outcome"):
         st.info(f"The predicted outcome of the game between {team1} and {team2} on {date} is uncertain")
 
 st.write("""feel free to connect **emezieugwuozor@gmail.com** or whatsapp **+2348037953669**""")
-badge(type="twitter", name="emezie_ugwuozor")
-badge(type="github", name="ClassicCollins")
 st.write("[**LinkedIn**](https://www.linkedin.com/in/collins-ugwuozor)")
