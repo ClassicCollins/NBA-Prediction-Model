@@ -1,54 +1,51 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import numpy as np
 
-# Load the models
-lr_model = joblib.load('nba_lr_model.pkl')
-GBoost_model = joblib.load('nba_GBoost_model.pkl')
-RF_model = joblib.load('nba_rf_model.pkl')
+# Load the trained model
+model = joblib.load('trained_models/nba_lr_model.pkl')
 
-# Load the data required for predictions
-nba_elo = pd.read_csv('data/nba_elo_latest.csv')
+# Load the preprocessed Elo ratings data
+elo_processed_data = pd.read_csv('data/elo_processed_data.csv')  # Adjust this as needed to load your data
 
-# Function to preprocess input data for predictions
-def preprocess_input(table2):
-    table2['date'] = pd.to_datetime(table2['date'])
-    df2 = table2[table2['season'] == 2023]
+# Streamlit App
+st.title("NBA Game Outcome Predictor")
+
+# Team Selection
+team1 = st.selectbox("Select Home Team", elo_processed_data['team1'].unique())
+team2 = st.selectbox("Select Away Team", elo_processed_data['team2'].unique())
+
+# Date Input
+date = st.date_input("Select Game Date", pd.to_datetime('today'))
+
+# Prediction Button
+if st.button("Predict Outcome"):
+    prediction1, prediction = predict_outcome(team1, team2, date.strftime('%Y-%m-%d'), elo_processed_data)
+
+    if prediction1 is None:
+        st.error(f"No previous data found for teams {team1} and {team2} before {date}")
+    elif prediction1 == 1:
+        st.success(f"The predicted outcome of the game between {team1} and {team2} on {date} is {team1} wins with {prediction * 100:.1f}% probability")
+    elif prediction1 == 0:
+        st.warning(f"The predicted outcome of the game between {team1} and {team2} on {date} is {team1} loses with {prediction * 100:.1f}% probability")
+    else:
+        st.info(f"The predicted outcome of the game between {team1} and {team2} on {date} is uncertain")
+
+# Prediction function
+def predict_outcome(team1, team2, date, data):
+    new_game = data[(data['team1'] == team1) & 
+                    (data['team2'] == team2) & 
+                    (data['date'] < date)].sort_values(by='date', ascending=False).head(1)
     
-    # Determine game results (1 if team1 wins, 0 if team2 wins)
-    df2['game_result'] = (df2['score1'] > df2['score2']).astype(int)
+    if new_game.empty:
+        return None, None
 
-    # Drop insignificant columns
-    cols_to_drop = ['date', 'season', 'playoff', 'team1', 'team2', 'elo1_post', 'elo2_post', 'neutral', 
-                    'carm-elo1_pre', 'carm-elo2_pre', 'carm-elo_prob1', 'carm-elo_prob2', 
-                    'carm-elo1_post', 'carm-elo2_post', 'importance', 'total_rating', 'score1', 'score2']
-    df2.drop(columns=cols_to_drop, inplace=True)
-
-    df2.reset_index(drop=True, inplace=True)
+    features = data.drop(['score1', 'score2', 'date', 'team1', 'team2'], axis=1)
+    new_game = new_game[features.columns].dropna()
     
-    return df2
+    if new_game.empty:
+        return None, None
 
-# Streamlit UI
-st.title('NBA Game Outcome Predictor')
-
-# User input for teams
-team1 = st.selectbox('Select Team 1', options=nba_elo['team1'].unique())
-team2 = st.selectbox('Select Team 2', options=nba_elo['team2'].unique())
-
-# Prediction button
-if st.button('Predict Outcome'):
-    # Preprocess the input data
-    input_data = preprocess_input(nba_elo)
-    
-    # Make predictions with all models
-    lr_prediction = lr_model.predict(input_data)[0]
-    gboost_prediction = GBoost_model.predict(input_data)[0]
-    rf_prediction = RF_model.predict(input_data)[0]
-
-    # Convert predictions to readable format
-    result_mapping = {1: f'{team1} Wins', 0: f'{team2} Wins'}
-    st.write("Predictions:")
-    st.write(f"Logistic Regression: {result_mapping[lr_prediction]}")
-    st.write(f"Gradient Boosting: {result_mapping[gboost_prediction]}")
-    st.write(f"Random Forest: {result_mapping[rf_prediction]}")
+    prediction1 = model.predict(new_game)
+    prediction = model.predict_proba(new_game)[0][1]
+    return prediction1[0], prediction
