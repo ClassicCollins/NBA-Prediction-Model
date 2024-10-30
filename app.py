@@ -41,8 +41,8 @@ def predict_outcome(team1, team2, date, data, model):
     return prediction1, prediction
 
 # Team Selection
-team1 = st.selectbox("Select Home Team", elo_processed_data['team1'].unique())
-team2 = st.selectbox("Select Away Team", elo_processed_data['team2'].unique())
+team1 = st.selectbox("Select Home Team eg. DET", elo_processed_data['team1'].unique())
+team2 = st.selectbox("Select Away Team eg. CLE", elo_processed_data['team2'].unique())
 
 # Date Input
 date = st.date_input("Select Game Date", pd.to_datetime('today'))
