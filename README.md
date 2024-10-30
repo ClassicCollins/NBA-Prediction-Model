@@ -27,8 +27,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/image/screenshot.png">
-    <img src="image/screenshot.png" alt="Logo" width="60" height="40">
+  <a></a> 
   </a>
 
 <h3 align="center">NBA Prediction Model</h3>
