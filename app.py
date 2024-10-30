@@ -13,17 +13,22 @@ def predict_outcome(team1, team2, date, data,model):
                     (data['date'] < date)].sort_values(by='date', ascending=False).head(1)
     
     if new_game.empty:
-        return None, None
+        return None
 
     features = data.drop(['score1', 'score2', 'date', 'team1', 'team2'], axis=1)
-    new_game = new_game[features.columns].dropna()
+    features = features.columns.to_list()
+    new_game = new_game[features]
     
-    if new_game.empty:
-        return None, None
+    # Drop NaN Values
+    new_game = new_game.dropna()
+    
+    # Make a prediction for the outcome of the new game
+    prediction1 = lr_model.predict(new_game)
+    prediction = lr_model.predict_proba(new_game)[0][1]
+    return prediction1, prediction
 
-    prediction1 = model.predict(new_game)
-    prediction = model.predict_proba(new_game)[0][1]
-    return prediction1[0], prediction
+    
+    
 # Load the trained model
 model = joblib.load('trained_models/nba_lr_model.pkl')
 
