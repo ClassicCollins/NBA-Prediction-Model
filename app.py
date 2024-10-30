@@ -23,8 +23,8 @@ def predict_outcome(team1, team2, date, data,model):
     new_game = new_game.dropna()
     
     # Make a prediction for the outcome of the new game
-    prediction1 = lr_model.predict(new_game)
-    prediction = lr_model.predict_proba(new_game)[0][1]
+    prediction1 = model.predict(new_game)
+    prediction = model.predict_proba(new_game)[0][1]
     return prediction1, prediction
 
     
