@@ -128,6 +128,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 * This was used to build their raptor ratings as a team.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 <!-- RESULTS -->
 ## Results
 * Logistic Regression demonstrated superior accuracy compared to other models.
