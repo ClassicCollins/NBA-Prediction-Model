@@ -28,7 +28,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <br />
 <div align="center">
   <a href="https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/image/screenshot.png">
-    <img src="image/logo.png" alt="Logo" width="600" height="200">
+    <img src="image/screenshot.png" alt="Logo" width="100" height="100">
   </a>
 
 <h3 align="center">NBA Prediction Model</h3>
@@ -167,7 +167,7 @@ Ensure you have Python installed and then run:
 
 Collins Emezie Ugwuozor - [@ClassicCollins2](https://x.com/ClassicCollins2) - ugwuozorcollinsemezie@gmail.com
 
-Project Link: [NBA-Prediction-Model](https://www.datascienceportfol.io/collinsugwuozor/)
+Project Link: [NBA-Prediction-Model](https://nba-game-predictor.streamlit.app/)
 
 Don't forget to give the project a star! Thanks again!
 
@@ -180,7 +180,7 @@ Don't forget to give the project a star! Thanks again!
 
 * [Python](https://www.python.org)
 * [Img Shields](https://shields.io)
-* [Google Colab](https://colab.research.google.com/)
+* [Streamlit](https://nba-game-predictor.streamlit.app/)
 * [MIT License](https://opensource.org/license/mit)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
