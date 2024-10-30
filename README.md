@@ -36,7 +36,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
   <p align="center">
     A project designed to spark your interest NBA Games Prediction using Python.!
     <br />
-    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model"><strong>Explore the Docs »</strong></a>
+    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model"><strong>Explore the Docs(Trained Model, Notebook etc) »</strong></a>
     <br />
     <br />
     <a href="https://nba-game-predictor.streamlit.app/">Predict with App</a>
@@ -86,7 +86,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 
 ### Project Goal
 `The goal` is to predict if a team will win or lose. Sounds interesting right? :smile:
-
+**[Predict with APP](https://nba-game-predictor.streamlit.app/)**
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -123,7 +123,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <!-- RESULTS -->
 ## Results
 * Logistic Regression demonstrated superior accuracy compared to other models.
-* Results were generated and stored in the results folder
+* Results were generated and stored in the [results folder](https://github.com/ClassicCollins/NBA-Prediction-Model/tree/classic/results)
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
