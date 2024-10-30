@@ -39,7 +39,7 @@ team2 = st.selectbox('Select Team 2', options=nba_elo['team2'].unique())
 # Prediction button
 if st.button('Predict Outcome'):
     # Preprocess the input data
-    input_data = preprocess_input(team1, team2, nba_elo)
+    input_data = preprocess_input(nba_elo)
     
     # Make predictions with all models
     lr_prediction = lr_model.predict(input_data)[0]
