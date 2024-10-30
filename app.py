@@ -18,19 +18,6 @@ team2 = st.selectbox("Select Away Team", elo_processed_data['team2'].unique())
 # Date Input
 date = st.date_input("Select Game Date", pd.to_datetime('today'))
 
-# Prediction Button
-if st.button("Predict Outcome"):
-    prediction1, prediction = predict_outcome(team1, team2, date.strftime('%Y-%m-%d'), elo_processed_data)
-
-    if prediction1 is None:
-        st.error(f"No previous data found for teams {team1} and {team2} before {date}")
-    elif prediction1 == 1:
-        st.success(f"The predicted outcome of the game between {team1} and {team2} on {date} is {team1} wins with {prediction * 100:.1f}% probability")
-    elif prediction1 == 0:
-        st.warning(f"The predicted outcome of the game between {team1} and {team2} on {date} is {team1} loses with {prediction * 100:.1f}% probability")
-    else:
-        st.info(f"The predicted outcome of the game between {team1} and {team2} on {date} is uncertain")
-
 # Prediction function
 def predict_outcome(team1, team2, date, data):
     new_game = data[(data['team1'] == team1) & 
@@ -49,3 +36,17 @@ def predict_outcome(team1, team2, date, data):
     prediction1 = model.predict(new_game)
     prediction = model.predict_proba(new_game)[0][1]
     return prediction1[0], prediction
+
+# Prediction Button
+if st.button("Predict Outcome"):
+    prediction1, prediction = predict_outcome(team1, team2, date.strftime('%Y-%m-%d'), elo_processed_data)
+
+    if prediction1 is None:
+        st.error(f"No previous data found for teams {team1} and {team2} before {date}")
+    elif prediction1 == 1:
+        st.success(f"The predicted outcome of the game between {team1} and {team2} on {date} is {team1} wins with {prediction * 100:.1f}% probability")
+    elif prediction1 == 0:
+        st.warning(f"The predicted outcome of the game between {team1} and {team2} on {date} is {team1} loses with {prediction * 100:.1f}% probability")
+    else:
+        st.info(f"The predicted outcome of the game between {team1} and {team2} on {date} is uncertain")
+
