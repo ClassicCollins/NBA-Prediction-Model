@@ -117,7 +117,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 
 <!-- HOW TO USE -->
 ## How to Make Use of This Project
-`Home Page:` 
+`REPOSITORY:` 
 * Access the App: Visit [NBA Game Predictor](https://nba-game-predictor.streamlit.app/) to make predictions.
 * Run Notebook [nba_prediction_notebook](https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/nba_prediction_notebook.ipynb) in the reporsitory
 * This would predict the teams that would qualify for the 2022-2023 NBA PLAYOFFS from both East and West conference
