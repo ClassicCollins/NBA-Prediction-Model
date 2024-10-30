@@ -17,9 +17,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 *** for stars-url, forks-url, etc.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links 
 -->
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
+
 [![Python][Python-logo]][Python-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 [![Twitter][twitter-shield]][twitter-url]
