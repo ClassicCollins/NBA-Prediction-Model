@@ -198,7 +198,7 @@ Don't forget to give the project a star! Thanks again!
 [issues-shield]: https://img.shields.io/github/issues/ClassicCollins/NBA-Prediction-Model.svg?style=for-the-badge
 [issues-url]: https://github.com/ClassicCollins/NBA-Prediction-Model/issues
 [license-shield]: https://img.shields.io/github/license/ClassicCollins/NBA-Prediction-Model.svg?style=for-the-badge
-[license-url]: https://github.com/ClassicCollins/NBA-Prediction-Model/blob/master/LICENSE
+[license-url]: https://github.com/ClassicCollins/NBA-Prediction-Model/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-white.svg?style=for-the-badge&logo=linkedin&colorB=blue
 [linkedin-url]: https://linkedin.com/in/collins-ugwuozor
 [product-screenshot]: image/screenshot1.png
