@@ -31,9 +31,9 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 <h3 align="center">NBA Prediction Model</h3>
 
   <p align="center">
-    A project designed to spark your interest NBA Games Prediction using Python.!
+    A project designed to spark your interest in NBA Games Prediction!
     <br />
-    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model"><strong>Explore the Docs(Trained Model, Notebook etc) »</strong></a>
+    <a href="https://github.com/ClassicCollins/NBA-Prediction-Model"><strong>Explore the Docs(Trained Models, Notebook,Results etc) »</strong></a>
     <br />
     <br />
     <a href="https://nba-game-predictor.streamlit.app/">Predict with App</a>
