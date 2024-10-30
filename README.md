@@ -39,7 +39,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
     <a href="https://github.com/ClassicCollins/NBA-Prediction-Model"><strong>Explore the Docs »</strong></a>
     <br />
     <br />
-    <a href="https://zindi.africa/competitions/microsoft-x-data-science-nigeria-2024-ai-bootcamp-qualification-hackathon">Participate in The Project</a>
+    <a href="https://nba-game-predictor.streamlit.app/">Predict with App</a>
     ·
     <a href="https://github.com/ClassicCollins/NBA-Prediction-Model/blob/classic/.github/ISSUE_TEMPLATE/bug-report---.md">Report Bug</a>
     ·
