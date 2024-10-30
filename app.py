@@ -11,13 +11,6 @@ elo_processed_data = pd.read_csv('data/elo_processed_data.csv')  # Adjust this a
 # Streamlit App
 st.title("NBA Game Outcome Predictor")
 
-# Team Selection
-team1 = st.selectbox("Select Home Team", elo_processed_data['team1'].unique())
-team2 = st.selectbox("Select Away Team", elo_processed_data['team2'].unique())
-
-# Date Input
-date = st.date_input("Select Game Date", pd.to_datetime('today'))
-
 # Prediction function
 def predict_outcome(team1, team2, date, data):
     new_game = data[(data['team1'] == team1) & 
@@ -36,7 +29,13 @@ def predict_outcome(team1, team2, date, data):
     prediction1 = model.predict(new_game)
     prediction = model.predict_proba(new_game)[0][1]
     return prediction1[0], prediction
+    
+# Team Selection
+team1 = st.selectbox("Select Home Team", elo_processed_data['team1'].unique())
+team2 = st.selectbox("Select Away Team", elo_processed_data['team2'].unique())
 
+# Date Input
+date = st.date_input("Select Game Date", pd.to_datetime('today'))
 # Prediction Button
 if st.button("Predict Outcome"):
     prediction1, prediction = predict_outcome(team1, team2, date.strftime('%Y-%m-%d'), elo_processed_data)
