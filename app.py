@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 
 # Streamlit App image
-st.image("image/screensot.png", caption='Think Game Prediction, Think Collins App', width=600, use_column_width="always")
+st.image("image/screenshot.png", caption='Think Game Prediction, Think Collins App', width=600, use_column_width="always")
 # Streamlit App
 st.title("NBA Game Outcome Predictor")
 
