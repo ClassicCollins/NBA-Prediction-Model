@@ -24,7 +24,7 @@ def predict_outcome(team1, team2, date, data, model):
                     (data['date'] < date)].sort_values(by='date', ascending=False).head(1)
 
     if new_game.empty:
-        st.error(f"Please, go back and select correct Home and Away Team to predict")
+        st.error(f"Please, go back and select correct Home and Away Team. Also, ensure you chosose date after 2019 b/4 predicting")
         return None, None
 
     features = data.drop(['score1', 'score2', 'date', 'team1', 'team2'], axis=1).columns.to_list()
