@@ -24,7 +24,7 @@ def predict_outcome(team1, team2, date, data, model):
                     (data['date'] < date)].sort_values(by='date', ascending=False).head(1)
 
     if new_game.empty:
-        print(f"No Match played by {team1} vs {team2} before {date}.")
+        st.error(f"No Match played by {team1} vs {team2} before {date}.")
         return None
 
     features = data.drop(['score1', 'score2', 'date', 'team1', 'team2'], axis=1).columns.to_list()
@@ -32,6 +32,10 @@ def predict_outcome(team1, team2, date, data, model):
 
     # Drop NaN Values
     new_game = new_game.dropna()
+    # Ensure there are features to predict
+    if new_game.empty:
+        st.error(f"Please, Choose correct Home and Away Team.")
+        return None, None
     
     # Check if new_game has the same columns as the model's training data
     if list(new_game.columns) != list(model.feature_names_in_):
