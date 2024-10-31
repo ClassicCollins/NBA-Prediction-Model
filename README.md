@@ -132,7 +132,7 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 
 <!-- RESULTS -->
 ## Results
-* Logistic Regression demonstrated superior accuracy compared to other models and was use for ease of interpretation of results to non technical audience.
+* Logistic Regression demonstrated superior accuracy compared to other models and was used for ease of interpretation of results to non technical audience.
 * Results were generated and stored in the [results folder](https://github.com/ClassicCollins/NBA-Prediction-Model/tree/classic/results)
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
