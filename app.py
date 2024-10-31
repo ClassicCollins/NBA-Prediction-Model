@@ -24,8 +24,8 @@ def predict_outcome(team1, team2, date, data, model):
                     (data['date'] < date)].sort_values(by='date', ascending=False).head(1)
 
     if new_game.empty:
-        st.error(f"No Match played by {team1} vs {team2} before {date}.")
-        return None
+        st.error(f"No Match played by {team1} vs {team2} before {date}. Please, go back and Select Correct Home and Away Team")
+        return None, None
 
     features = data.drop(['score1', 'score2', 'date', 'team1', 'team2'], axis=1).columns.to_list()
     new_game = new_game[features]
