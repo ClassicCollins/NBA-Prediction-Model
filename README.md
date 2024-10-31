@@ -126,12 +126,13 @@ Predicting the teams that will qualify and win the 2022-2023 NBA
 * `DEN` is predicted as the winner of 2022-2023 NBA
 * Another notebook called `NBA Prediction` contains fictional_team build by choosen 15 players at random and aggregating their statistics
 * This was used to build their raptor ratings as a team.
+* For advance player statistics  [NBA Stats Collins App](https://classiccollins-basketball.streamlit.app/) was used
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- RESULTS -->
 ## Results
-* Logistic Regression demonstrated superior accuracy compared to other models.
+* Logistic Regression demonstrated superior accuracy compared to other models and was use for ease of interpretation of results to non technical audience.
 * Results were generated and stored in the [results folder](https://github.com/ClassicCollins/NBA-Prediction-Model/tree/classic/results)
   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
