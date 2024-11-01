@@ -1,5 +1,6 @@
 # NBA-Prediction-Model
 Predicting the teams that will qualify and win the 2022-2023 NBA
+### Developed and Deployed by Collins Emezie Ugwuozor
 <!-- Improved compatibility of back to top link: See: https://github.com/ClassicCollins/NBA-Prediction-Model/back2top -->
 <a id="readme-top"></a>
 <!--
