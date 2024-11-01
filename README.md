@@ -192,6 +192,7 @@ Don't forget to give the project a star! Thanks again!
 * [Img Shields](https://shields.io)
 * [Streamlit](https://nba-game-predictor.streamlit.app/)
 * [MIT License](https://opensource.org/license/mit)
+* [Veegil Media](https://media.veegil.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
